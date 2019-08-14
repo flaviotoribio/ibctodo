@@ -10,8 +10,8 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render 'shared/navigation' %>
+    <%= render 'shared/alerts' %>
+    <%= content_for?(:content) ? yield(:content) : yield %>
   </body>
 </html>
