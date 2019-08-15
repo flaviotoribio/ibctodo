@@ -32,38 +32,6 @@ $(document).ready(function () {
   // Frequently reloaded functions first-run
   initializeAfterAjax();
 
-  // Processes buttons for creating blocks of lists
-  $('.create-editable').editable({
-    params: function (param) {
-      return { name: param.value, return_block: true };
-    },
-    send: 'always',
-    autotext: 'never',
-    enablefocus: false,
-    overwrite: false,
-    highlight: false,
-    success: onNewList,
-    error: function (xhr) {
-      return 'Invalid name';
-    }
-  });
-
-  // Processes buttons for creating new cards
-  $('.create-card-editable').editable({
-    params: function (param) {
-      return { text: param.value, return_block: true };
-    },
-    send: 'always',
-    autotext: 'never',
-    enablefocus: false,
-    overwrite: false,
-    highlight: false,
-    success: onNewCard,
-    error: function (xhr) {
-      return 'Invalid text';
-    }
-  });
-
 });
 
 function onNewList(data) {
@@ -99,6 +67,38 @@ function updateListsOrder() {
 function initializeAfterAjax() {
   // Process newly loaded icons
   feather.replace({ 'stroke': '#666', 'width': 22, 'height': 22 });
+
+  // Processes buttons for creating blocks of lists
+  $('.create-editable').editable({
+    params: function (param) {
+      return { name: param.value, return_block: true };
+    },
+    send: 'always',
+    autotext: 'never',
+    enablefocus: false,
+    overwrite: false,
+    highlight: false,
+    success: onNewList,
+    error: function (xhr) {
+      return 'Invalid name';
+    }
+  });
+
+  // Processes buttons for creating new cards
+  $('.create-card-editable').editable({
+    params: function (param) {
+      return { text: param.value, return_block: true };
+    },
+    send: 'always',
+    autotext: 'never',
+    enablefocus: false,
+    overwrite: false,
+    highlight: false,
+    success: onNewCard,
+    error: function (xhr) {
+      return 'Invalid text';
+    }
+  });
 
   // Initialize summer note (WYSIWYG)
   $('[data-provider="summernote"]').each(function () {
@@ -163,7 +163,6 @@ function initializeAfterAjax() {
 
   // Add click event for board block deletion
   $('.board-delete').bind('ajax:complete', function (xhr, status, options) {
-    console.log("aaaa");
     // Adds the 'no content' placeholder if there are no more blocks
     if ($('.board-block').length == 0) {
       $('#card-drag-area').prepend('<span class="no-content">No boards.</span>');
