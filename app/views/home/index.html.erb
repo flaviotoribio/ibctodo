@@ -1,3 +1,26 @@
 <div class="container">
 
+<section id="drag-area">
+  <div class="row">
+    <div class="col-12 mt-1 mb-3">
+      <h4 class="text-uppercase list-heading">Lists</h4>
+      <button type="button" class="btn btn-outline-primary list-add create-editable"
+        data-type="text" data-http="post" data-url="<%= board_lists_path(@board) %>">
+        <i data-feather="plus"></i>
+      </button>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row" id="card-drag-area">
+
+    <% if @lists.empty? %>
+      <span class="no-content">No lists</span>
+    <% end %>
+
+    <%= render partial: 'list_blocks', locals: { board: @board, lists: @lists } %>
+
+  </div>
+</section>
+
 </div>

@@ -12,6 +12,9 @@
  */
 
 @import "bootstrap";
+@import "bootstrap-extended.min";
+@import "bootstrap-editable";
+@import "dragula.min";
 
 .auth {
   position: relative;
@@ -20,4 +23,27 @@
 
 .alerts {
   text-align: center;
+}
+
+section {
+  margin: 30px auto 30px auto;
+}
+
+.heading-elements {
+  background-color: transparent !important;
+  top: 6px !important;
+  right: 15px !important;
+}
+
+.list-heading {
+  display: inline-block;
+
+  &+.list-add {
+    margin-top: -8px;
+    margin-left: 15px;
+  }
+}
+
+.create-editable {
+  border-bottom: solid 1px rgb(0, 123, 255) !important;
 }

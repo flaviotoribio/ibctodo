@@ -14,9 +14,7 @@ class BoardsController < ApiController
     if @board.save
       render json: @board, status: :created
     else
-      render json: { errors: @board.errors,
-                     full_message: @board.errors.full_messages },
-                   status: :unprocessable_entity
+      render partial: 'home/list_blocks' # fix
     end
   end
 
@@ -27,7 +25,7 @@ class BoardsController < ApiController
     else
       render json: { errors: @board.errors,
                      full_message: @board.errors.full_messages },
-                   status: :unprocessable_entity
+                     status: :unprocessable_entity
     end
   end
 

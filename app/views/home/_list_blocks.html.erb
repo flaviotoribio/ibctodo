@@ -1,0 +1,31 @@
+<% lists.each do |list| %>
+  <div class="col-md-6 col-sm-12 list-block">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title title">
+          <a href="#" class="name-editable" data-type="text" data-http="put"
+            data-url="<%= board_list_path(board, list) %>" data-name="name">
+              <%= list.name %>
+          </a>
+        </h4>
+
+        <div class="heading-elements">
+          <ul class="list-inline mb-0">
+            <li>
+              <%= link_to board_list_path(board, list), method: :delete, remote: true, class: 'link-delete' do %>
+                <i data-feather="x"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-content collapse show">
+        <div class="card-body">
+          <h4 class="card-title">Content title</h4>
+          <p class="card-text">Jelly beans sugar plum cheesecake cookie oat cake soufflé.Tootsie roll bonbon liquorice tiramisu pie powder.Donut sweet roll marzipan pastry cookie cake tootsie roll oat cake cookie.</p>
+          <p class="card-text">Sweet roll marzipan pastry halvah. Cake bear claw sweet. Tootsie roll pie marshmallow lollipop chupa chups donut fruitcake cake.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
