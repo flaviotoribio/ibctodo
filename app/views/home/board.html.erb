@@ -4,10 +4,13 @@
     <div class="row">
       <div class="col-12 mt-1 mb-3">
         <h4 class="text-uppercase list-heading">
-          Boards
+          <a href="#" class="name-editable" data-type="text" data-http="put"
+            data-url="<%= board_path(@board) %>" data-name="name">
+              <%= @board.name %>
+          </a>
         </h4>
         <button type="button" class="btn btn-outline-primary list-add create-editable"
-          data-type="text" data-http="post" data-url="<%= boards_path %>">
+          data-type="text" data-http="post" data-url="<%= board_lists_path(@board) %>">
           <i data-feather="plus"></i>
         </button>
         <hr>
@@ -16,11 +19,11 @@
 
     <div class="row" id="card-drag-area">
 
-      <% if @boards.empty? %>
-        <span class="no-content">No boards.</span>
+      <% if @lists.empty? %>
+        <span class="no-content">No lists.</span>
       <% end %>
 
-      <%= render partial: 'board_blocks', locals: { boards: @boards } %>
+      <%= render partial: 'list_blocks', locals: { board: @board, lists: @lists } %>
 
     </div>
   </section>

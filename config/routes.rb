@@ -4,14 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
   resource :users
 
-  #namespace :api do 
-
-    resources :boards do
-      resources :lists do
-        resources :cards
-      end
+  resources :boards do
+    resources :lists do
+      resources :cards
     end
+  end
 
-  #end 
+  match "/board/:id" => "home#board", via: :get, as: "home_board"
 
 end

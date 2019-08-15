@@ -1,0 +1,12 @@
+<% cards.each do |card| %>
+  <div class="model-card card-body editor-wrapper">
+    <%= link_to board_list_card_path(board, list, card), method: :delete, remote: true, class: 'card-delete' do %>
+      <i data-feather="x"></i>
+    <% end %>
+    <%= form_for [board, list, card], html: { class: 'invisible' } do |form| %>
+      <div class="field">
+        <%= form.text_area :text, remote: true, 'data-provider': :summernote %>
+      </div>
+    <% end %>  
+  </div>
+<% end %>

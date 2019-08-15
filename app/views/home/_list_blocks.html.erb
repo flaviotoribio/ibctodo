@@ -1,5 +1,5 @@
 <% lists.each do |list| %>
-  <div class="col-md-6 col-sm-12 list-block">
+  <div class="col-md-3 col-sm-12 list-block" data-listid="<%= list.id %>">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title title">
@@ -12,7 +12,7 @@
         <div class="heading-elements">
           <ul class="list-inline mb-0">
             <li>
-              <%= link_to board_list_path(board, list), method: :delete, remote: true, class: 'link-delete' do %>
+              <%= link_to board_list_path(board, list), method: :delete, remote: true, class: 'list-delete' do %>
                 <i data-feather="x"></i>
               <% end %>
             </li>
@@ -20,11 +20,15 @@
         </div>
       </div>
       <div class="card-content collapse show">
-        <div class="card-body">
-          <h4 class="card-title">Content title</h4>
-          <p class="card-text">Jelly beans sugar plum cheesecake cookie oat cake soufflé.Tootsie roll bonbon liquorice tiramisu pie powder.Donut sweet roll marzipan pastry cookie cake tootsie roll oat cake cookie.</p>
-          <p class="card-text">Sweet roll marzipan pastry halvah. Cake bear claw sweet. Tootsie roll pie marshmallow lollipop chupa chups donut fruitcake cake.</p>
+        <%= render partial: 'card_blocks', locals: { board: board, list: list, cards: list.cards } %>
+
+        <div class="card-footer">
+          <a href="#" class="card-post create-card-editable" data-type="text" data-value=""
+            data-url="<%= board_list_cards_path(board, list) %>" data-name="text">
+              <i data-feather="plus"></i> Add a card
+          </a>
         </div>
+
       </div>
     </div>
   </div>

@@ -1,0 +1,32 @@
+<% boards.each do |board| %>
+  <div class="col-md-3 col-sm-12 board-block" data-boardid="<%= board.id %>">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title title">
+          <a href="#" class="name-editable" data-type="text" data-http="put"
+            data-url="<%= board_path(board) %>" data-name="name">
+              <%= board.name %>
+          </a>
+        </h4>
+
+        <div class="heading-elements">
+          <ul class="list-inline mb-0">
+            <li>
+              <%= link_to board_path(board), method: :delete, remote: true, class: 'board-delete' do %>
+                <i data-feather="x"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <%= link_to home_board_path(board) do %>
+        <div class="card-content collapse show">
+          <div class="card-body">
+            <%= board.lists.count %> lists
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

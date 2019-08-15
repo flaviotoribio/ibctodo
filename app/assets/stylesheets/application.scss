@@ -15,6 +15,8 @@
 @import "bootstrap-extended.min";
 @import "bootstrap-editable";
 @import "dragula.min";
+@import "summernote";
+@import "summernote-bs4";
 
 .auth {
   position: relative;
@@ -33,6 +35,10 @@ section {
   background-color: transparent !important;
   top: 6px !important;
   right: 15px !important;
+
+  ul>li>a {
+    padding: 0 !important;
+  }
 }
 
 .list-heading {
@@ -46,4 +52,63 @@ section {
 
 .create-editable {
   border-bottom: solid 1px rgb(0, 123, 255) !important;
+}
+
+.note-statusbar {
+  display: none !important;
+}
+
+.note-editor {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.editor-wrapper {
+  padding: 5px 10px 5px 10px !important;
+
+  &>form {
+    //height: 150px;
+  }
+}
+
+.note-editor .note-editable {
+  line-height: 0.5;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.model-card {
+  &>a {
+    right: 15px;
+    position: absolute;
+    z-index: 100;
+    visibility: hidden;
+
+    &>svg {
+      height: 75% !important;
+      width: 75% !important;
+    }
+  }
+
+  &:hover a {
+    visibility: visible;
+  }
+}
+
+.list-block {
+  .card-content {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+
+    .card-footer {
+      background-color: transparent;
+
+      .card-post {
+        border-bottom: none;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }
