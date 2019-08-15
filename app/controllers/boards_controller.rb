@@ -12,9 +12,19 @@ class BoardsController < ApiController
   def create
     @board = current_user.boards.new(board_params)
     if @board.save
-      render json: @board, status: :created
+      if params['return_block'].blank?
+        render json: @board, status: :created
+      else
+        render partial: 'home/board_blocks', locals: { boards: [@board] }
+      end
     else
-      render partial: 'home/list_blocks' # fix
+      if params['return_block'].blank?
+        render json: { errors: @board.errors,
+                       full_message: @board.errors.full_messages },
+                       status: :unprocessable_entity
+      else
+        render partial: 'home/board_blocks' # fix
+      end
     end
   end
 

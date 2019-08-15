@@ -163,13 +163,14 @@ function initializeAfterAjax() {
 
   // Add click event for board block deletion
   $('.board-delete').bind('ajax:complete', function (xhr, status, options) {
+    console.log("aaaa");
     // Adds the 'no content' placeholder if there are no more blocks
     if ($('.board-block').length == 0) {
       $('#card-drag-area').prepend('<span class="no-content">No boards.</span>');
     }
 
     // Removes the block
-    $(this).closest('.list-block').fadeOut(300, function() { $(this).remove(); });
+    $(this).closest('.board-block').fadeOut(300, function() { $(this).remove(); });
   });
 
   // Add click event for card block deletion
